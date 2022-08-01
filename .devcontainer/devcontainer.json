@@ -1,13 +1,22 @@
 {
-	"name": "ARM-based (Bullseye)",
+	"name": ".NET & C#",
 	"image": "mcr.microsoft.com/vscode/devcontainers/base:dev-bullseye",
 	
     "workspaceMount": "src=${localWorkspaceFolder},dst=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5001],
+	"forwardPorts": [ 5000, 5001 ],
 
+	"containerEnv": {
+		// Set ASP.NET environment settings.
+		"ASPNETCORE_URLS": "https://+:7071;http://+:7070",
+		"ASPNETCORE_ENVIRONMENT": "Development",
+		// Set dotnet CLI environment settings.
+		"DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+		"DOTNET_GENERATE_ASPNET_CERTIFICATE": "1",
+		"DOTNET_NOLOGO": "1"
+	},
 	"features": {
 		"common": {
 			"username": "automatic",
@@ -29,34 +38,77 @@
 		"github-cli": "latest"
 	},
 
-	"settings": {
-		"workbench.colorTheme": "Visual Studio 2019 Dark",
-		"terminal.integrated.defaultProfile.linux": "zsh",
-		"editor.formatOnPaste": true,
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {
+				"workbench.colorTheme": "Visual Studio 2019 Dark",
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"editor.formatOnPaste": true,
+				"editor.guides.bracketPairs": "active",
+				"scm.defaultViewMode": "tree",
+				"debug.internalConsoleOptions": "neverOpen",
+				"files.watcherExclude": {
+					"**/bin/**": true,
+					"**/obj/**": true
+				},
+				"files.associations": {
+					"**/ci/*.yml": "azure-pipelines"
+				},
+				"azureFunctions.projectLanguage": "C#",
+				"azureFunctions.projectRuntime": "~4",
+				// "azureFunctions.preDeployTask": "publish",
+				"omnisharp.enableAsyncCompletion": true,
+				"omnisharp.enableImportCompletion": true,
+				"omnisharp.enableRoslynAnalyzers": true,
+				"omnisharp.organizeImportsOnFormat": true,
+				"omnisharp.useEditorFormattingSettings": true,
+				"omnisharp.enableEditorConfigSupport": true,
+				// Fix for ARM-based devices.
+				// Read more https://github.com/OmniSharp/omnisharp-vscode/issues/4348#issuecomment-1003867594
+				"omnisharp.useModernNet": true,
+				"razor.disabled": true
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"github.vscode-pull-request-github",
 
-		"editor.guides.bracketPairs": "active",
+				"visualstudioexptteam.vscodeintellicode",
+				"visualstudiotxptteam.vscodeintellicode-completions",
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.vscode-dotnet-runtime",
+				"ms-edgedevtools.vscode-edge-devtools",
+				
+				"humao.rest-client",
 
-		"scm.defaultViewMode": "tree",
-		"debug.internalConsoleOptions": "neverOpen"
+				"ms-vscode.azurecli",
+				"ms-azuretools.vscode-docker",
+				"ms-azuretools.vscode-azureappservice",
+				"ms-azuretools.vscode-azureserverlesspack",
+
+				"ms-azuretools.vscode-azurestorage",
+				"azurite.azurite",
+
+				"ms-azuretools.vscode-azureresourcegroups",
+				"ms-azuretools.vscode-azurevirtualmachines",
+				"bencoleman.armview",
+
+				"ms-azure-devops.azure-pipelines",
+				// This ext is bundled with mssql and will be installed automatically.
+				// Database projects can be handled via Azure Data Studio.
+				// "ms-mssql.sql-database-projects-vscode",
+
+				"ms-dotnettools.dotnet-interactive-vscode",
+
+				"ms-vscode.wordcount",
+				"editorconfig.editorconfig",
+				"streetsidesoftware.code-spell-checker",
+				"redhat.fabric8-analytics",
+				"redhat.vscode-yaml",
+				"bierner.github-markdown-preview"
+			]
+		}
 	},
-
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"humao.rest-client",
-		"github.vscode-pull-request-github",
-
-		"visualstudioexptteam.vscodeintellicode",
-		"visualstudiotxptteam.vscodeintellicode-completions",
-
-		"ms-azuretools.vscode-docker",
-
-		"ms-vscode.wordcount",
-		"editorconfig.editorconfig",
-		"streetsidesoftware.code-spell-checker",
-		"redhat.fabric8-analytics",
-		"redhat.vscode-yaml",
-		"bierner.github-markdown-preview"
-	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "zsh .devcontainer/post-create.zsh",
