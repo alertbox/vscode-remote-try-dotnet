@@ -23,8 +23,6 @@ This template repo serves as a flavor of quick-starter development container for
 - ZSH integrated Terminal
 - Docker CLI with Compose v2
 
-
-
 ## Using This Template
 
 If you are completely new to .NET, [Awesome .NET discussion][awesome-list-dotnet] is a good source to start with.
@@ -57,7 +55,7 @@ If you have any technical problems with GitHub Codespaces or dev containers, you
 
 ## Contributing
 
-The official repo to contribute would be [@microsoft/vscode-dev-containers][contrib-official-repo]. 
+The official repo to contribute would be [@microsoft/vscode-dev-containers][contrib-official-repo].
 
 Have a suggestion or a bug fix? Just open a pull request or an issue. Include the development container with clear and simplest instructions possible.
 

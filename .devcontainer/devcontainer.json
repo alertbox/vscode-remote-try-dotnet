@@ -47,8 +47,6 @@
 
 				"editor.guides.bracketPairs": "active",
 
-				"scm.defaultViewMode": "tree",
-				"remote.containers.copyGitConfig": true,
 				"debug.internalConsoleOptions": "neverOpen",
 
 				"files.watcherExclude": {
