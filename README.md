@@ -10,8 +10,6 @@ This template repo serves as a flavor of quick-starter development container for
 [gh-codespaces-quickstart]: https://docs.github.com/en/codespaces/getting-started/quickstart
 [dotnet-quickstart]: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oUc2ShrReCS7KoBbPEONE0p
 
-
-
 ### What's in it:
 
 - .NET 6.0 SDK and Runtime
