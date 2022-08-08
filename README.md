@@ -10,8 +10,6 @@ This template repo serves as a flavor of quick-starter development container for
 [gh-codespaces-quickstart]: https://docs.github.com/en/codespaces/getting-started/quickstart
 [dotnet-quickstart]: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oUc2ShrReCS7KoBbPEONE0p
 
-
-
 ### What's in it:
 
 - .NET 6.0 SDK and Runtime
@@ -22,8 +20,6 @@ This template repo serves as a flavor of quick-starter development container for
 - Git and GitHub CLI for versioning
 - ZSH integrated Terminal
 - Docker CLI with Compose v2
-
-
 
 ## Using This Template
 
@@ -43,8 +39,40 @@ First, you want to ensure source code is Reopened in Container. Then you'll be a
 With VS Code:
 
 1. In a terminal, run `dotnet --list-sdks` to verify required versions are installed.
-3. Run `az --version` to verify Azure CLI version is 2.4 or above.
+3. Run `gh --version` to verify GitHub CLI is installed.
 
+### Create a minimal api
+
+Next, you would want to create a .net project, say, a minimal web api `test-project` that ships with .net template projects.
+
+With VS Code:
+
+1. Run the `dotnet new` command to create a web api with specific template.
+   ```bash
+   dotnet new webapi -o test-project \
+                     --use-minimal-apis \
+                     --language "C#"
+   ```
+2. Open the launchSettings.json, then change the `test_project` profile to run on port `5000` for HTTP and `5001` for HTTPS.
+   ```json
+   "profiles": {
+     "test_project": {
+       // ...
+       "applicationUrl": "https://localhost:5001;http://localhost:5000",
+       // ...
+   }
+   ```
+
+### Build and run from source
+
+VS Code is integrated with the Omnisharp Tools to run the web api on the local development computer, in this case, its this dev container.
+
+With VS Code:
+
+1. Press `F5` to start the web api project and call the swagger endpoint. The terminal displays the output from the Debug Console.
+2. When the web api executes locally, your favorite browser will launch the https://localhost:5001.
+3. Visit https://localhost:5001/swagger
+4. Press `Ctrl+C` to stop disconnect the debugger.
 
 
 ## Feedback
@@ -54,15 +82,13 @@ If you have any technical problems with GitHub Codespaces or dev containers, you
 [feedback-channels]: https://github.com/microsoft/vscode-dev-containers#contributing-and-feedback
 
 
-
 ## Contributing
 
-The official repo to contribute would be [@microsoft/vscode-dev-containers][contrib-official-repo]. 
+The official repo to contribute would be [@microsoft/vscode-dev-containers][contrib-official-repo].
 
 Have a suggestion or a bug fix? Just open a pull request or an issue. Include the development container with clear and simplest instructions possible.
 
 [contrib-official-repo]: https://github.com/microsoft/vscode-dev-containers#readme
-
 
 
 ## License
