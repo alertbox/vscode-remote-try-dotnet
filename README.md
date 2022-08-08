@@ -48,15 +48,12 @@ Next, you would want to create a .net project, say, a minimal web api `test-proj
 With VS Code:
 
 1. Run the `dotnet new` command to create a web api with specific template.
-
    ```bash
    dotnet new webapi -o test-project \
                      --use-minimal-apis \
                      --language "C#"
    ```
-
 2. Open the launchSettings.json, then change the `test_project` profile to run on port `5000` for HTTP and `5001` for HTTPS.
-
    ```json
    "profiles": {
      "test_project": {
@@ -78,13 +75,11 @@ With VS Code:
 4. Press `Ctrl+C` to stop disconnect the debugger.
 
 
-
 ## Feedback
 
 If you have any technical problems with GitHub Codespaces or dev containers, you are better off asking [VS Code Support][feedback-channels] directly, since you'll end up getting a much faster response back that way.
 
 [feedback-channels]: https://github.com/microsoft/vscode-dev-containers#contributing-and-feedback
-
 
 
 ## Contributing
@@ -94,7 +89,6 @@ The official repo to contribute would be [@microsoft/vscode-dev-containers][cont
 Have a suggestion or a bug fix? Just open a pull request or an issue. Include the development container with clear and simplest instructions possible.
 
 [contrib-official-repo]: https://github.com/microsoft/vscode-dev-containers#readme
-
 
 
 ## License
